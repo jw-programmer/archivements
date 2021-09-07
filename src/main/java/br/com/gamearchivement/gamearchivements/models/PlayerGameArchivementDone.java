@@ -1,7 +1,6 @@
 package br.com.gamearchivement.gamearchivements.models;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,39 +8,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import br.com.gamearchivement.gamearchivements.Enuns.ChallangeLevel;
 
 @Entity
-public class Archivement implements Serializable {
+public class PlayerGameArchivementDone implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String Description;
-    private Integer challangeLevel;
+    @ManyToOne
+    @JoinColumn(name = "player_id")
+    private Player player;
 
     @ManyToOne
     @JoinColumn(name = "game_id")
     private Game game;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "archivement")
-    private List<PlayerGameArchivementDone> playerGameArchivementDones;
+    @ManyToOne
+    @JoinColumn(name = "archivement_id")
+    private Archivement archivement;
 
-    public Archivement() {
-        
+    public PlayerGameArchivementDone() {
     }
 
-    public Archivement(Integer id, String description, ChallangeLevel challangeLevel) {
+    public PlayerGameArchivementDone(Integer id, Player player, Game game, Archivement archivement) {
         this.id = id;
-        Description = description;
-        this.challangeLevel = (challangeLevel == null) ? null : challangeLevel.getLevel();
+        this.player = player;
+        this.game = game;
+        this.archivement = archivement;
+    }
+
+    public PlayerGameArchivementDone(Player player, Game game, Archivement archivement) {
+        this.player = player;
+        this.game = game;
+        this.archivement = archivement;
     }
 
     public Integer getId() {
@@ -52,20 +53,28 @@ public class Archivement implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return Description;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setDescription(String description) {
-        Description = description;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
-    public ChallangeLevel getChallangeLevel() {
-        return ChallangeLevel.toEnum(challangeLevel);
+    public Game getGame() {
+        return game;
     }
 
-    public void setChallangeLevel(ChallangeLevel challangeLevel) {
-        this.challangeLevel = challangeLevel.getLevel();
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Archivement getArchivement() {
+        return archivement;
+    }
+
+    public void setArchivement(Archivement archivement) {
+        this.archivement = archivement;
     }
 
     @Override
@@ -84,13 +93,12 @@ public class Archivement implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Archivement other = (Archivement) obj;
+        PlayerGameArchivementDone other = (PlayerGameArchivementDone) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
         } else if (!id.equals(other.id))
             return false;
         return true;
-    } 
-
+    }
 }

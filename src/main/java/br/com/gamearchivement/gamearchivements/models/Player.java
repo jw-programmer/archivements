@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import br.com.gamearchivement.gamearchivements.Enuns.Roles;
@@ -17,6 +19,10 @@ public class Player extends SystemUser {
 
     @ManyToMany(mappedBy = "players")
     private List<Game> games = new LinkedList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "player")
+    private List<PlayerGameArchivementDone> playerGameArchivementDones;
 
     public Player() {
         addRoles(Roles.PLAYER);

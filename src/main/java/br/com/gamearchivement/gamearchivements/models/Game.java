@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Game implements Serializable{
     private static final long serialVersionUID = 1L;
@@ -29,6 +31,10 @@ public class Game implements Serializable{
     @ManyToMany
     @JoinTable(name = "GAME_PLAYER", joinColumns = @JoinColumn(name="game_id"), inverseJoinColumns = @JoinColumn(name = "player_id"))
     private List<Player> players = new LinkedList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "game")
+    private List<PlayerGameArchivementDone> playerGameArchivementDones;
 
     public Game() {
     }
