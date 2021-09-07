@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -23,6 +26,10 @@ public class Game implements Serializable{
     @OneToMany(mappedBy = "game")
     private List<Archivement> archivements = new LinkedList<>();
 
+    @ManyToMany
+    @JoinTable(name = "GAME_PLAYER", joinColumns = @JoinColumn(name="game_id"), inverseJoinColumns = @JoinColumn(name = "player_id"))
+    private List<Player> players = new LinkedList<>();
+
     public Game() {
     }
 
@@ -31,6 +38,7 @@ public class Game implements Serializable{
         this.name = name;
         this.archivements = archivements;
     }
+    
 
     public Integer getId() {
         return id;
