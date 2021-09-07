@@ -42,4 +42,12 @@ public class Player extends SystemUser {
         this.games = games;
     }
 
+    public List<PlayerGameArchivementDone> getPlayerGameArchivementDones() {
+        return playerGameArchivementDones;
+    }
+
+    public void setPlayerGameArchivementDones(List<PlayerGameArchivementDone> playerGameArchivementDones) {
+        this.playerGameArchivementDones = playerGameArchivementDones;
+    }
+
 }

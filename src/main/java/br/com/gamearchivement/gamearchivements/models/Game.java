@@ -70,6 +70,14 @@ public class Game implements Serializable{
         this.archivements = archivements;
     }
 
+    public List<PlayerGameArchivementDone> getPlayerGameArchivementDones() {
+        return playerGameArchivementDones;
+    }
+
+    public void setPlayerGameArchivementDones(List<PlayerGameArchivementDone> playerGameArchivementDones) {
+        this.playerGameArchivementDones = playerGameArchivementDones;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

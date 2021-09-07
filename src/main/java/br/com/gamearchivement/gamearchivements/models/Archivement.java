@@ -68,6 +68,14 @@ public class Archivement implements Serializable {
         this.challangeLevel = challangeLevel.getLevel();
     }
 
+    public List<PlayerGameArchivementDone> getPlayerGameArchivementDones() {
+        return playerGameArchivementDones;
+    }
+
+    public void setPlayerGameArchivementDones(List<PlayerGameArchivementDone> playerGameArchivementDones) {
+        this.playerGameArchivementDones = playerGameArchivementDones;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
