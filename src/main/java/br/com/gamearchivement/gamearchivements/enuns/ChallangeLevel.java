@@ -1,4 +1,4 @@
-package br.com.gamearchivement.gamearchivements.Enuns;
+package br.com.gamearchivement.gamearchivements.enuns;
 
 public enum ChallangeLevel {
     PLATINUM(4, "platinun"), EASY(1, "easy"), MEDIUM(2, "medium"), HARD(3, "hard");

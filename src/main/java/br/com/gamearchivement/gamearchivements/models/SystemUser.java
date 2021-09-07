@@ -17,7 +17,7 @@ import javax.persistence.InheritanceType;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import br.com.gamearchivement.gamearchivements.Enuns.Roles;
+import br.com.gamearchivement.gamearchivements.enuns.Roles;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

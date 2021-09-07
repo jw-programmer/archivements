@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.gamearchivement.gamearchivements.Enuns.ChallangeLevel;
+import br.com.gamearchivement.gamearchivements.enuns.ChallangeLevel;
 
 @Entity
 public class Archivement implements Serializable {

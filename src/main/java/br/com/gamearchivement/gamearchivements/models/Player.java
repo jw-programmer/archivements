@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-import br.com.gamearchivement.gamearchivements.Enuns.Roles;
+import br.com.gamearchivement.gamearchivements.enuns.Roles;
 
 @Entity
 @JsonTypeName("player")

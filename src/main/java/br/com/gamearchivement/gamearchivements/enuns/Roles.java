@@ -1,4 +1,4 @@
-package br.com.gamearchivement.gamearchivements.Enuns;
+package br.com.gamearchivement.gamearchivements.enuns;
 
 public enum Roles {
     ADMIN(1, "ROLE_ADMIM"),
