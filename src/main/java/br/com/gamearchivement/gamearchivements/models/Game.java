@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Game implements Serializable{
@@ -25,7 +27,7 @@ public class Game implements Serializable{
 
     private String name;
     
-    @OneToMany(mappedBy = "game")
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
     private List<Archivement> archivements = new LinkedList<>();
 
     @ManyToMany
@@ -37,6 +39,11 @@ public class Game implements Serializable{
     private List<PlayerGameArchivementDone> playerGameArchivementDones;
 
     public Game() {
+    }
+
+    public Game(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Game(Integer id, String name, List<Archivement> archivements) {

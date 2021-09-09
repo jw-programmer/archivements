@@ -44,6 +44,13 @@ public class Archivement implements Serializable {
         this.challangeLevel = (challangeLevel == null) ? null : challangeLevel.getLevel();
     }
 
+    public Archivement(Integer id, String description, ChallangeLevel challangeLevel, Game game) {
+        this.id = id;
+        Description = description;
+        this.challangeLevel = (challangeLevel == null) ? null : challangeLevel.getLevel();
+        this.game = game;
+    }
+
     public Integer getId() {
         return id;
     }
