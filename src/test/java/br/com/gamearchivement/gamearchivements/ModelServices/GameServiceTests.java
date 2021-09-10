@@ -52,10 +52,21 @@ public class GameServiceTests {
     }
 
     @Test
-    void serviceShootObejctNotFoundException() {
+    void serviceThrowObejctNotFoundException() {
         assertThrows(ObjectNotFoundException.class, () -> {
             repo.find(9999);
         });
+    }
+
+    void serviceCanFindByName() {
+        Game game = new Game(null, "mario");
+        repo.insert(game);
+
+        List<Game> games = repo.findByName("su");
+
+        assertNotNull(games);
+        assertEquals(1, games.size());
+        assertEquals(previo, games.get(0));
     }
 
 }
