@@ -77,6 +77,14 @@ public class Game implements Serializable{
         this.archivements = archivements;
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
     public List<PlayerGameArchivementDone> getPlayerGameArchivementDones() {
         return playerGameArchivementDones;
     }

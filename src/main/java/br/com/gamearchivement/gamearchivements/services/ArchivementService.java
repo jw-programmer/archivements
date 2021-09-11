@@ -21,4 +21,8 @@ public class ArchivementService {
         
         return repo.saveAll(objs);
     }
+
+    public void removeArchivements(List<Archivement> objs){
+        repo.deleteAll(objs);
+    }
 }

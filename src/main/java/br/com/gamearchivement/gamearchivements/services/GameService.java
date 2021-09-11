@@ -1,5 +1,6 @@
 package br.com.gamearchivement.gamearchivements.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class GameService {
     public Game find(Integer id) {
         Optional<Game> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Game don't exist!"));
+    }
+
+    public List<Game> findByName(String name) {
+        return repo.findByNameLike(name);
     }
 
 }

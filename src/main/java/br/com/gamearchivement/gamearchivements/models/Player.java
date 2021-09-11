@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -17,7 +18,7 @@ import br.com.gamearchivement.gamearchivements.enuns.Roles;
 public class Player extends SystemUser {
     private static final long serialVersionUID = 1L;
 
-    @ManyToMany(mappedBy = "players")
+    @ManyToMany(mappedBy = "players", fetch = FetchType.EAGER)
     private List<Game> games = new LinkedList<>();
 
     @JsonIgnore
@@ -31,6 +32,11 @@ public class Player extends SystemUser {
     public Player(Integer id, String username, String password, List<Game> games) {
         super(id, username, password);
         this.games = games;
+        addRoles(Roles.PLAYER);
+    }
+
+    public Player(Integer id, String username, String password) {
+        super(id, username, password);
         addRoles(Roles.PLAYER);
     }
 
