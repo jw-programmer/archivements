@@ -31,6 +31,10 @@ public class PlayerService {
         return repo.save(player);
     }
 
+    public List<Player> findAll(){
+        return repo.findAll();
+    }
+
     public Player find(Integer id) {
         Optional<Player> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Game don't exist!"));
